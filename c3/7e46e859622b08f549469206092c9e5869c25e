@@ -1,0 +1,19 @@
+src/components/Dashboard.tsx
+  s_92a60d1065e380::t_6e40b700ddeb08 184,186-188,193
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c37e46e859622b08f549469206092c9e5869c25e",
+  "prompts": {},
+  "sessions": {
+    "s_92a60d1065e380": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_0cc9283bcffeYUQ8OaYestppKr",
+        "model": "unknown"
+      },
+      "human_author": "ronak-ravtode <ronakravtode001@gmail.com>"
+    }
+  }
+}
