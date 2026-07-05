@@ -179,11 +179,11 @@ export default function Dashboard() {
 
                   <div 
                     onClick={() => handleOpenDoc(doc.id)}
-                    className="aspect-[3/4] bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden editor-canvas-shadow group-hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                    className="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden editor-canvas-shadow group-hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="p-4 h-full flex flex-col">
+                    <div className="p-4 flex flex-col gap-3">
                       {/* Thumbnail / content visual preview */}
-                      <div className="w-full flex-1 bg-white rounded border border-outline-variant/30 overflow-hidden relative">
+                      <div className="w-full h-32 bg-white rounded border border-outline-variant/30 overflow-hidden relative">
                         <div className="p-3 text-[11px] leading-[1.6] text-on-surface font-body overflow-hidden h-full">
                           {(() => {
                             const text = doc.content
@@ -204,7 +204,7 @@ export default function Dashboard() {
                       </div>
                       
                       {/* Stat Lines */}
-                      <div className="pt-3 space-y-1.5">
+                      <div className="space-y-1.5">
                         <div className="flex justify-between items-center text-[10px] text-outline font-mono">
                           <span>{doc.wordCount} words</span>
                           <span>{doc.charCount} chars</span>
