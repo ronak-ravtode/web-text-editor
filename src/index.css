@@ -1,0 +1,732 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #f8f9ff;
+  --color-surface-dim: #cbdbf5;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f3fa;
+  --color-surface-container: #e5eeff;
+  --color-surface-container-high: #dce9ff;
+  --color-surface-container-highest: #d3e4fe;
+  --color-surface-elevated: #ffffff;
+  
+  --color-on-surface: #0b1c30;
+  --color-on-surface-variant: #5a6178;
+  --color-outline: #8b90a0;
+  --color-outline-variant: #d0d4e0;
+  
+  --color-primary: #0f172a;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #131b2e;
+  --color-on-primary-container: #7c839b;
+  
+  --color-secondary: #0058be;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #2170e4;
+  --color-on-secondary-container: #fefcff;
+  
+  --color-success: #059669;
+  --color-success-container: #d1fae5;
+  --color-on-success: #064e3b;
+
+  --color-error: #dc2626;
+  --color-on-error: #ffffff;
+  --color-error-container: #fee2e2;
+  --color-on-error-container: #991b1b;
+
+  --color-warning: #d97706;
+  --color-warning-container: #fef3c7;
+  --color-on-warning: #78350f;
+
+  --color-accent: #3b82f6;
+  --color-accent-light: #93c5fd;
+  --color-accent-dark: #1d4ed8;
+  --color-accent-glow: rgba(59, 130, 246, 0.08);
+
+  --font-display: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-elevated: 0 4px 12px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-panel: 0 8px 24px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent-light);
+  color: var(--color-primary);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* TipTap Editor Styles */
+.tiptap {
+  outline: none;
+  min-height: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-on-surface);
+  padding: 48px 56px;
+  cursor: text;
+}
+
+.tiptap p {
+  margin: 0 0 0.8em 0;
+}
+
+.tiptap h1 {
+  font-family: var(--font-display);
+  font-size: 2.2em;
+  line-height: 1.2;
+  margin: 0 0 0.6em 0;
+  color: var(--color-on-surface);
+  letter-spacing: -0.01em;
+}
+
+.tiptap h2 {
+  font-family: var(--font-display);
+  font-size: 1.65em;
+  line-height: 1.3;
+  margin: 1.2em 0 0.5em 0;
+  color: var(--color-on-surface);
+}
+
+.tiptap h3 {
+  font-family: var(--font-display);
+  font-size: 1.3em;
+  line-height: 1.4;
+  margin: 1em 0 0.4em 0;
+  color: var(--color-on-surface);
+}
+
+.tiptap h4 {
+  font-family: var(--font-display);
+  font-size: 1.1em;
+  line-height: 1.4;
+  margin: 0.8em 0 0.3em 0;
+  color: var(--color-on-surface);
+}
+
+.tiptap h5 {
+  font-family: var(--font-display);
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0.6em 0 0.25em 0;
+  color: var(--color-on-surface);
+}
+
+.tiptap h6 {
+  font-family: var(--font-display);
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin: 0.5em 0 0.2em 0;
+  color: var(--color-on-surface-variant);
+}
+
+.tiptap strong {
+  font-weight: 700;
+  color: var(--color-on-surface);
+}
+
+.tiptap em {
+  font-style: italic;
+}
+
+.tiptap u {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+
+.tiptap ul {
+  list-style-type: disc;
+}
+
+.tiptap ul ul {
+  list-style-type: circle;
+}
+
+.tiptap ul ul ul {
+  list-style-type: square;
+}
+
+.tiptap ul ul ul ul {
+  list-style-type: disc;
+}
+
+.tiptap ul ul ul ul ul {
+  list-style-type: circle;
+}
+
+.tiptap ul ul ul ul ul ul {
+  list-style-type: square;
+}
+
+.tiptap ol {
+  list-style-type: decimal;
+}
+
+.tiptap li {
+  margin: 0.25em 0;
+}
+
+.tiptap blockquote {
+  border-left: 3px solid var(--color-accent);
+  margin: 1em 0;
+  padding: 0.5em 0 0.5em 1.2em;
+  font-style: italic;
+  color: var(--color-on-surface-variant);
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 1px solid var(--color-outline-variant);
+  margin: 2em 0;
+}
+
+/* Table Styles */
+.tiptap table {
+  border-collapse: collapse;
+  width: 100% !important;
+  table-layout: fixed;
+  margin: 1em 0;
+  position: relative;
+  outline: none;
+}
+
+.tiptap td,
+.tiptap th {
+  border: 1px solid #dadce0;
+  padding: 8px 12px;
+  vertical-align: top;
+  position: relative;
+  min-width: 0;
+  min-height: 28px;
+  outline: none;
+}
+
+.tiptap th {
+  background: #f8f9fa;
+  font-weight: 600;
+  text-align: left;
+}
+
+.tiptap td > p,
+.tiptap th > p {
+  margin: 0;
+}
+
+.tiptap .selectedCell {
+  background: rgba(26, 115, 232, 0.08);
+}
+
+/* Column resize handle (TipTap built-in) */
+.tiptap .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: transparent;
+  cursor: col-resize;
+  z-index: 10;
+}
+
+.tiptap .column-resize-handle:hover,
+.tiptap .column-resize-handle.active {
+  background: #1a73e8;
+}
+
+/* Table resize wrapper */
+.tiptap .tableWrapper {
+  overflow-x: visible;
+  margin: 1em 0;
+}
+
+.tiptap .resize-cursor {
+  cursor: col-resize !important;
+}
+
+/* Allow images inside table cells */
+.tiptap td .image-resizer-wrapper,
+.tiptap th .image-resizer-wrapper {
+  max-width: 100%;
+}
+
+.tiptap td img,
+.tiptap th img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── Table Controls (Google Slides style) ─── */
+.table-handle {
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* Blue selection outline */
+.table-outline {
+  border: 2px solid #1a73e8;
+  pointer-events: none;
+  border-radius: 1px;
+}
+
+/* Move handle */
+.table-move {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  color: #5f6368;
+  cursor: grab;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  transition: background 0.1s, box-shadow 0.1s;
+}
+
+.table-move:hover {
+  background: #f1f3f4;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+.table-move:active {
+  cursor: grabbing;
+}
+
+/* Corner resize handles — small blue squares */
+.table-corner {
+  width: 10px;
+  height: 10px;
+  background: #1a73e8;
+  border: 1.5px solid white;
+  border-radius: 1px;
+  transition: transform 0.1s;
+}
+
+.table-corner:hover {
+  transform: scale(1.3);
+}
+
+.table-tl { cursor: nwse-resize; }
+.table-tr { cursor: nesw-resize; }
+.table-bl { cursor: nesw-resize; }
+.table-br { cursor: nwse-resize; }
+
+/* Edge midpoint resize handles — small blue circles */
+.table-edge {
+  width: 8px;
+  height: 8px;
+  background: #1a73e8;
+  border: 1.5px solid white;
+  border-radius: 50%;
+  transition: transform 0.1s;
+}
+
+.table-edge:hover {
+  transform: scale(1.4);
+}
+
+.table-e-left { cursor: ew-resize; }
+.table-e-right { cursor: ew-resize; }
+.table-e-top { cursor: ns-resize; }
+.table-e-bottom { cursor: ns-resize; }
+
+/* Allow images inside table cells */
+.tiptap td .image-resizer-wrapper,
+.tiptap th .image-resizer-wrapper {
+  max-width: 100%;
+}
+
+.tiptap td img,
+.tiptap th img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Image Styles */
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Inline images sit in text flow */
+.tiptap img:not(.align-left):not(.align-right):not(.align-center) {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.tiptap img.align-left,
+.tiptap .image-resizer.align-left,
+.tiptap .image-resizer-wrapper.align-left {
+  float: left;
+  margin: 0.5em 1.2em 0.5em 0;
+  max-width: 45%;
+}
+
+.tiptap img.align-right,
+.tiptap .image-resizer.align-right,
+.tiptap .image-resizer-wrapper.align-right {
+  float: right;
+  margin: 0.5em 0 0.5em 1.2em;
+  max-width: 45%;
+}
+
+.tiptap img.align-center,
+.tiptap .image-resizer.align-center,
+.tiptap .image-resizer-wrapper.align-center {
+  display: block;
+  margin: 1em auto;
+  float: none;
+}
+
+/* Image Resize Handle */
+.image-resizer {
+  position: relative;
+  display: inline-block;
+}
+
+.image-resizer .resize-handle {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent);
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: nwse-resize;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.image-resizer:hover .resize-handle,
+.image-resizer .resize-handle.active {
+  opacity: 1;
+}
+
+/* Image Controls (alignment, delete) */
+.image-resizer-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.image-controls {
+  position: absolute;
+  top: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px 6px;
+  background: white;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 20;
+}
+
+.image-control-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--color-on-surface-variant);
+  font-size: 10px;
+  transition: all 0.1s;
+}
+
+.image-control-btn:hover {
+  background: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.image-control-btn.active {
+  background: var(--color-accent);
+  color: white;
+}
+
+.image-control-btn.delete:hover {
+  background: var(--color-error);
+  color: white;
+}
+
+.image-control-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--color-outline-variant);
+  margin: 0 2px;
+}
+
+/* Placeholder */
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--color-on-surface-variant);
+  pointer-events: none;
+  height: 0;
+  font-style: italic;
+}
+
+/* Text Alignment */
+.tiptap [style*="text-align: center"] { text-align: center; }
+.tiptap [style*="text-align: right"] { text-align: right; }
+.tiptap [style*="text-align: justify"] { text-align: justify; }
+
+/* ============================================
+   MULTI-PAGE SUPPORT
+   ============================================ */
+
+/* Pages wrapper - contains all pages */
+.pages-wrapper {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Single A4 page */
+.a4-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03), 0px 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--color-outline-variant);
+  position: relative;
+  overflow: visible;
+  page-break-after: always;
+  break-after: page;
+  border-radius: 4px;
+}
+
+/* Page break visual indicator */
+.page-break-marker {
+  width: calc(100% + 112px);
+  margin-left: -56px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 8px 0;
+  position: relative;
+  border: none;
+}
+
+.page-break-marker::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  border-top: 2px dashed var(--color-outline-variant);
+}
+
+.page-break-marker::after {
+  content: "✂ Page Break";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 0 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* Page number at bottom of each page */
+.page-number {
+  position: absolute;
+  bottom: 20mm;
+  right: 24mm;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-on-surface-variant);
+}
+
+/* Print styles - removed */
+
+/* Toolbar Button Active State */
+.toolbar-btn-active {
+  background: var(--color-accent) !important;
+  color: white !important;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Custom CSS mockup styles */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+.page-shadow, .editor-canvas-shadow {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03);
+}
+.frosted-glass, .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Print styles */
+@media print {
+  .no-print,
+  .table-handle,
+  .image-controls,
+  .resize-handle,
+  .tiptap .column-resize-handle {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tiptap {
+    padding: 0;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  .tiptap table {
+    page-break-inside: avoid;
+  }
+
+  .tiptap img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  .tiptap h1, .tiptap h2, .tiptap h3, .tiptap h4, .tiptap h5, .tiptap h6 {
+    page-break-after: avoid;
+  }
+
+  .page-break-marker {
+    page-break-after: always;
+    border: none;
+    height: 0;
+  }
+
+  .page-break-marker::before,
+  .page-break-marker::after {
+    display: none;
+  }
+}
+
+/* Toast animations */
+@keyframes toast-slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes toast-slide-out {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+.toast-enter {
+  animation: toast-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast-exit {
+  animation: toast-slide-out 0.2s ease-in forwards;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Sidebar nav active indicator (no layout shift) */
+.sidebar-nav-active {
+  background: var(--color-surface-container-high);
+  color: var(--color-secondary);
+  position: relative;
+}
+.sidebar-nav-active::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  bottom: 25%;
+  width: 3px;
+  background: var(--color-secondary);
+  border-radius: 3px 0 0 3px;
+}
+
+/* Table overrides for styling toggles */
+.tiptap table.table-striped tr:nth-child(even) td {
+  background-color: var(--color-surface-container-low);
+}
+.tiptap table.table-no-vertical-borders td,
+.tiptap table.table-no-vertical-borders th {
+  border-left: none;
+  border-right: none;
+}
+
