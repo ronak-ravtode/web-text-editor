@@ -185,7 +185,21 @@ export default function Dashboard() {
                       {/* Thumbnail / content visual preview */}
                       <div className="w-full flex-1 bg-white rounded border border-outline-variant/30 overflow-hidden relative">
                         <div className="p-3 text-[11px] leading-[1.6] text-on-surface font-body overflow-hidden h-full">
-                          {doc.content.replace(/<[^>]*>/g, '').trim().substring(0, 200) || 'Empty document'}
+                          {(() => {
+                            const text = doc.content
+                              .replace(/<br\s*\/?>/gi, ' ')
+                              .replace(/<\/(p|div|h[1-6]|li|tr)>/gi, ' ')
+                              .replace(/<[^>]*>/g, '')
+                              .replace(/&nbsp;/g, ' ')
+                              .replace(/&amp;/g, '&')
+                              .replace(/&lt;/g, '<')
+                              .replace(/&gt;/g, '>')
+                              .replace(/&quot;/g, '"')
+                              .replace(/&#39;/g, "'")
+                              .replace(/\s+/g, ' ')
+                              .trim()
+                            return text.substring(0, 200) || 'Empty document'
+                          })()}
                         </div>
                       </div>
                       
