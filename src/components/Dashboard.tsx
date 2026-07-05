@@ -181,17 +181,16 @@ export default function Dashboard() {
                     onClick={() => handleOpenDoc(doc.id)}
                     className="aspect-[3/4] bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden editor-canvas-shadow group-hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                   >
-                    <div className="p-4 h-full flex flex-col gap-3">
+                    <div className="p-4 h-full flex flex-col">
                       {/* Thumbnail / content visual preview */}
-                      <div className="w-full h-32 bg-surface-container-low rounded-sm overflow-hidden opacity-80 border border-outline-variant/50 relative">
-                        <div className="p-3 text-[9px] leading-relaxed text-on-surface-variant font-serif overflow-hidden h-full">
-                          {/* Strip html tags for preview */}
-                          {doc.content.replace(/<[^>]*>/g, ' ').substring(0, 160)}...
+                      <div className="w-full flex-1 bg-white rounded border border-outline-variant/30 overflow-hidden relative">
+                        <div className="p-3 text-[11px] leading-[1.6] text-on-surface font-body overflow-hidden h-full">
+                          {doc.content.replace(/<[^>]*>/g, '').trim().substring(0, 200) || 'Empty document'}
                         </div>
                       </div>
                       
                       {/* Stat Lines */}
-                      <div className="flex-1 py-1 space-y-1.5">
+                      <div className="pt-3 space-y-1.5">
                         <div className="flex justify-between items-center text-[10px] text-outline font-mono">
                           <span>{doc.wordCount} words</span>
                           <span>{doc.charCount} chars</span>
