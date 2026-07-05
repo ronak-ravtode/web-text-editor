@@ -1,0 +1,19 @@
+.gitignore
+  s_92a60d1065e380::t_3752f440baacf8 25-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "edbd1c4838be0b3036d6ac23009090dd14e8d385",
+  "prompts": {},
+  "sessions": {
+    "s_92a60d1065e380": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_0cc9283bcffeYUQ8OaYestppKr",
+        "model": "unknown"
+      },
+      "human_author": "ronak-ravtode <ronakravtode001@gmail.com>"
+    }
+  }
+}
