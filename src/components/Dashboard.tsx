@@ -1,20 +1,14 @@
-import { useState } from 'react'
 import { useEditorStore } from '../store/editorStore'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 export default function Dashboard() {
   const { 
     documents, 
-    tasks, 
-    toggleTask, 
-    addTask, 
     setActiveDocumentId, 
     setActiveView,
     deleteDocument,
     searchQuery 
   } = useEditorStore()
-
-  const [newTaskText, setNewTaskText] = useState('')
 
   // Filter documents by search query
   const filteredDocs = documents.filter(doc => 
@@ -31,14 +25,6 @@ export default function Dashboard() {
     const id = store.createDocument('Untitled Document', '<h1>Untitled Document</h1>')
     setActiveDocumentId(id)
     setActiveView('editor')
-  }
-
-  const handleAddTaskSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (newTaskText.trim()) {
-      addTask(newTaskText.trim())
-      setNewTaskText('')
-    }
   }
 
   // Calculate stats
@@ -237,108 +223,6 @@ export default function Dashboard() {
           </div>
         </div>
       </section>
-
-      {/* Right Side Panel: Activity Feed & Stats */}
-      <aside className="w-panel-width bg-surface border-l border-outline-variant flex flex-col overflow-hidden shrink-0 text-left">
-        {/* Workspace Activity Feed */}
-        <div className="p-6 border-b border-outline-variant">
-          <h3 className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-4">
-            Workspace Activity
-          </h3>
-          <div className="space-y-6">
-            <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[18px]">history</span>
-              </div>
-              <div>
-                <p className="text-label-md font-semibold text-on-surface">Alex Thompson</p>
-                <p className="text-label-sm text-on-surface-variant leading-tight">
-                  Commented on <span className="text-secondary font-medium">Q4 Strategy</span>
-                </p>
-                <span className="text-[10px] text-outline mt-1 block">12m ago</span>
-              </div>
-            </div>
-            
-            <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[18px]">sync</span>
-              </div>
-              <div>
-                <p className="text-label-md font-semibold text-on-surface">Sarah Lee</p>
-                <p className="text-label-sm text-on-surface-variant leading-tight">
-                  Shared <span className="text-secondary font-medium">Brand Guidelines</span>
-                </p>
-                <span className="text-[10px] text-outline mt-1 block">1h ago</span>
-              </div>
-            </div>
-
-            <div className="flex gap-3">
-              <div className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-[18px]">upload_file</span>
-              </div>
-              <div>
-                <p className="text-label-md font-semibold text-on-surface">System</p>
-                <p className="text-label-sm text-on-surface-variant leading-tight">
-                  3 files were successfully archived
-                </p>
-                <span className="text-[10px] text-outline mt-1 block">4h ago</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Upcoming Tasks Checklist */}
-        <div className="p-6 flex-1 overflow-y-auto no-scrollbar flex flex-col justify-between">
-          <div>
-            <h3 className="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-4">
-              Upcoming Tasks
-            </h3>
-            
-            <div className="space-y-3">
-              {tasks.map((task) => (
-                <div 
-                  key={task.id} 
-                  className={`p-3 bg-surface-container-lowest rounded-lg border border-outline-variant flex items-start gap-3 transition-opacity ${
-                    task.completed ? 'opacity-60' : ''
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => toggleTask(task.id)}
-                    className="mt-1 rounded border-outline-variant text-secondary focus:ring-secondary cursor-pointer"
-                  />
-                  <div>
-                    <p className={`text-label-md font-medium text-on-surface ${task.completed ? 'line-through' : ''}`}>
-                      {task.text}
-                    </p>
-                    <p className="text-label-sm text-on-surface-variant mt-0.5">{task.dueDate}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Add Task Input Form */}
-          <form onSubmit={handleAddTaskSubmit} className="mt-6 pt-4 border-t border-outline-variant">
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                value={newTaskText}
-                onChange={(e) => setNewTaskText(e.target.value)}
-                placeholder="Add new task..."
-                className="flex-1 bg-surface-container-low border border-outline-variant rounded-md px-3 py-1.5 text-xs outline-none focus:ring-1 focus:ring-secondary focus:border-secondary text-on-surface"
-              />
-              <button 
-                type="submit"
-                className="bg-primary text-on-primary p-1.5 rounded-md hover:opacity-90 active:scale-95 transition-all cursor-pointer flex items-center justify-center"
-              >
-                <span className="material-symbols-outlined text-[16px]">add</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </aside>
     </div>
   )
 }
